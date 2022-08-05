@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+*{
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', cursive;
+}
+
+html{
+   --base:#0a0a80;
+   --sub:rgb(246, 72, 9);
+}
+
+nav{
+    background-color: rgb(224, 224, 224);
+    position: sticky;
+    z-index: 2;
+    top: 0;
+}
+
+main{
+    /* background-image: url(./Img/roman-kraft-_Zua2hyvTBk-unsplash.jpg); */
+    background-size: contain;
+    background: rgba(95, 121, 122, 0.858);
+    mix-blend-mode: normal;
+    min-height: 100vh;
+}
+
+.ft{
+    font-size: 1.5rem;
+}
+
+.btnn{
+    background-color: var(--base);
+    color: white;
+    box-shadow: 0px 0px 5px 9px rgba(224, 224, 224, 0.581);
+}
+
+
