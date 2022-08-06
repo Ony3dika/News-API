@@ -10,70 +10,35 @@ btn.addEventListener("click", news)
 
 function news(){
 
-    const get = new XMLHttpRequest()
+    const Get = new Fet
 
-    get.open('GET', "https://newsapi.org/v2/everything?q=apple&from=2022-08-04&to=2022-08-04&sortBy=popularity&apiKey=debc006fb2c345aeb3852667d4e94d8d", true);
+    Get.get("https://newsapi.org/v2/everything?q=apple&from=2022-08-04&to=2022-08-04&sortBy=popularity&apiKey=debc006fb2c345aeb3852667d4e94d8d")
 
-    get.onload = function (){
-        if (this.status === 200){
-            let data = JSON.parse(this.responseText)
+        .then((art,name,author,title,description,publishedAt,urlToImage,source)=>{
+            console.log(art.articles)
 
-            let info = data.articles
-    
-            console.log(info)
+            let info = art.articles
 
-            info.forEach(function(news){
+            dis.textContent='';
+
+            art.articles.forEach((info)=>{
                 var div = document.createElement('div');
                 div.classList.add('card', 'p-3','mt-3','col-xl-5','col-10','ms-4','mx-xl-auto')
-                div.innerHTML = `<h2 style="color:#0a0a80;"><b>${news.title}</b></h2> 
+                div.innerHTML = `<h2 style="color:#0a0a80;"><b>${info.title}</b></h2> 
 
-                    <h4>By <b>${news.author}</b> from <b>${news.source.name}</b></h4>
-                    <h6  style="color:#0a0a80;">${news.publishedAt}</h6>
+                    <h4>By <b>${info.author}</b> from <b>${info.source.name}</b></h4>
+                    <h6  style="color:#0a0a80;">${info.publishedAt}</h6>
 
-                    <div class="text-center"><img src="${news.urlToImage}" class="w-75 rounded" alt="no image"></div>
+                    <div class="text-center"><img src="${info.urlToImage}" class="w-75 rounded" alt="no image"></div>
 
-                    <p class="mt-3">${news.description} <br> <a href="${news.url}" target="_blank" style="text-decoration:none;" > Read more here...</a></p>
+                    <p class="mt-3">${info.description} <br> <a href="${info.url}" target="_blank" style="text-decoration:none;" > Read more here...</a></p>
                 `
 
                 dis.append(div)
             })
-        }
-        else{console.log(this.status)}
+        })
 
-       
-    }
-
-    get.send()
-
-    // const Get = new Fet
-
-    // Get.get("https://newsapi.org/v2/everything?q=apple&from=2022-08-04&to=2022-08-04&sortBy=popularity&apiKey=debc006fb2c345aeb3852667d4e94d8d")
-
-    //     .then((art,name,author,title,description,publishedAt,urlToImage,source)=>{
-    //         console.log(art.articles)
-
-    //         let info = art.articles
-
-    //         dis.textContent='';
-
-    //         art.articles.forEach((info)=>{
-                // var div = document.createElement('div');
-                // div.classList.add('card', 'p-3','mt-3','col-xl-5','col-10','ms-4','mx-xl-auto')
-                // div.innerHTML = `<h2 style="color:#0a0a80;"><b>${info.title}</b></h2> 
-
-                //     <h4>By <b>${info.author}</b> from <b>${info.source.name}</b></h4>
-                //     <h6  style="color:#0a0a80;">${info.publishedAt}</h6>
-
-                //     <div class="text-center"><img src="${info.urlToImage}" class="w-75 rounded" alt="no image"></div>
-
-                //     <p class="mt-3">${info.description} <br> <a href="${info.url}" target="_blank" style="text-decoration:none;" > Read more here...</a></p>
-                // `
-
-                // dis.append(div)
-    //         })
-    //     })
-
-    // .catch( (error)=> console.log(error))
+    .catch( (error)=> console.log(error))
 
     
 }
